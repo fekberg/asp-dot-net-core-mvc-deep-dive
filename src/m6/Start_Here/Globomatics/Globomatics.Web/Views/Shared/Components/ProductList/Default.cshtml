@@ -1,0 +1,44 @@
+﻿@using Globomantics.Domain.Models;
+@model IEnumerable<Product>
+
+<h5 class="card-title">Available events</h5>
+<table class="table">
+    <caption>Last updated @DateTimeOffset.UtcNow.ToString("R")</caption>
+    <thead>
+        <tr>
+            <th scope="col"></th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td><img src="~/img/products/@(product.ProductId).jpg" width="150" /></td>
+                <td>
+                    <url-with-slug
+                        asp-action="TicketDetails"
+                        asp-controller="Home"
+                        for-product-id="@product.ProductId"
+                        for-ticket-name="@product.Name">
+                        @product.Name
+                    </url-with-slug>
+
+@*                     <a asp-action="TicketDetails"
+                       asp-controller="Home"
+                       asp-route-productId="@product.ProductId"
+                       asp-route-slug="@product.Name">@product.Name</a> *@
+                </td>
+                <td>@product.Price.ToString("c")</td>
+                <td>
+                    <form asp-controller="Cart" asp-action="Add">
+                        <input type="hidden" name="product.productId" value="@product.ProductId" />
+                        <input type="submit" value="Add to cart" class="btn btn-primary" />
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

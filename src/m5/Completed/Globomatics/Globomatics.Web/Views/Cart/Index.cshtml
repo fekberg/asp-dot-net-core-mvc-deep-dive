@@ -1,0 +1,38 @@
+﻿@using Globomantics.Domain.Models;
+
+@model Cart
+@{
+    ViewData["Title"] = "Cart";
+}
+<div class="row">
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-body">
+                TBA - Shopping cart
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Place Order</h5>
+                @await Html.PartialAsync("_PlaceOrder")
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script type="text/javascript">
+        function copyToClipboard() {
+            var copyText = document.getElementById("url");
+
+            copyText.select();
+            copyText.setSelectionRange(0, 99999);
+
+            navigator.clipboard.writeText(copyText.value);
+        }
+    </script>
+}

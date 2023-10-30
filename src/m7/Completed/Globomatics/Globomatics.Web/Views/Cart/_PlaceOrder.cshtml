@@ -1,0 +1,39 @@
+﻿@using Globomantics.Domain.Models;
+@model CreateOrderModel
+
+<form asp-controller="Cart" asp-action="Finalize">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="Customer.Email" class="control-label"></label>
+        <input asp-for="Customer.Email" class="form-control" />
+        <span asp-validation-for="Customer.Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Customer.Name" class="control-label"></label>
+        <input asp-for="Customer.Name" class="form-control" />
+        <span asp-validation-for="Customer.Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Customer.ShippingAddress" class="control-label"></label>
+        <input asp-for="Customer.ShippingAddress" class="form-control" />
+        <span asp-validation-for="Customer.ShippingAddress" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Customer.City" class="control-label"></label>
+        <input asp-for="Customer.City" class="form-control" />
+        <span asp-validation-for="Customer.City" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Customer.PostalCode" class="control-label"></label>
+        <input asp-for="Customer.PostalCode" class="form-control" />
+        <span asp-validation-for="Customer.PostalCode" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Customer.Country" class="control-label"></label>
+        <input asp-for="Customer.Country" class="form-control" />
+        <span asp-validation-for="Customer.Country" class="text-danger"></span>
+    </div>
+    <div class="form-group mt-3">
+        <input type="submit" value="Place Order" class="btn btn-primary" />
+    </div>
+</form>

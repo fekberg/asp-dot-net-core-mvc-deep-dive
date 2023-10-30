@@ -1,0 +1,97 @@
+﻿@using Globomantics.Domain.Models;
+@model ShoppingCartModel
+
+@if (Model is null || Model.Cart is null || !Model.Cart.LineItems.Any())
+{
+    <partial name="_NoItemsInCart" />
+}
+else
+{
+    <h5 class="card-title">View your cart</h5>
+
+    <form asp-controller="Cart" asp-action="Update">
+        <table class="table">
+            <thead>
+                <tr>
+
+                    @if (!Model.IsCompact)
+                    {
+                        <th scope="col"></th>
+                    }
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (var index = 0; index < Model.Cart.LineItems.Count; index++)
+                {
+                    var lineItem = Model.Cart.LineItems.ElementAt(index);
+
+                    if (lineItem.Product is null) continue;
+
+                    <tr>
+                        @if (!Model.IsCompact)
+                        {
+                            <td><img src="~/img/products/@(lineItem.ProductId).jpg" width="150" /></td>
+                        }
+                        <td>@lineItem.Product.Name</td>
+                        <td>@lineItem.Product.Price.ToString("c")</td>
+
+
+                        @if (!Model.IsCompact)
+                        {
+                            <td>
+                                <input type="hidden" name="products[@index].productId" value="@lineItem.ProductId" />
+                                <select name="products[@index].quantity">
+                                    @for (var row = 0; row < 100; row++)
+                                    {
+                                        if (row == lineItem.Quantity)
+                                        {
+                                            <option selected value="@row">@row</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@row">@row</option>
+                                        }
+                                    }
+                                </select>
+                            </td>
+                        }
+                        else
+                        {
+                            <td>@lineItem.Quantity</td>
+                        }
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4">
+                        @if (!Model.IsCompact)
+                        {
+                            <input type="submit" value="Update cart" class="btn btn-primary" />
+                        }
+                        else
+                        {
+                            <a asp-action="Index" asp-controller="Cart" class="btn btn-primary">Checkout</a>
+                        }
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+
+    </form>
+    @if (Model.Cart.LineItems.Any() && !Model.IsCompact)
+    {
+        <div id="urlBox" class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Cart URL</span>
+            </div>
+            <input id="url" readonly type="text" class="form-control" aria-label="Cart URL" value="@Url.Action(action: "Index", controller: "Cart", values: new { id = Model.Cart.CartId }, protocol: Context.Request.Scheme)">
+            <div class="input-group-append">
+                <input id="copyToClipboard" onclick="copyToClipboard()" type="button" value="Copy to clipboard" class="btn btn-primary" />
+            </div>
+        </div>
+    }
+}

@@ -1,0 +1,28 @@
+.header-cart {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: row;
+}
+
+    .header-cart img {
+        height: 20px;
+        margin-right: 18px;
+        width: 23px;
+    }
+
+    .header-cart p {
+        color: #fff;
+        font-size: 9px;
+        font-weight: bold;
+        line-height: 40.3%;
+        margin-right: 50px;
+        text-transform: uppercase;
+    }
+
+        .header-cart p span {
+            color: #fff;
+            font-size: 18px;
+            font-weight: bold;
+            line-height: 25px;
+            padding-right: 5px;
+        }

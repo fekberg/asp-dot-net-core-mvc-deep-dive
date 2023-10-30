@@ -1,0 +1,30 @@
+﻿@using Globomatics.Infrastructure.Repositories;
+
+@inject IStateRepository stateRepository
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="row">
+    <div class="col-md-7">
+        <div class="card">
+            <div class="card-body">
+                <cache expires-after="@TimeSpan.FromSeconds(10)">
+                    @await Component.InvokeAsync("ProductList")
+                </cache>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-5">
+        <div class="card">
+            <div class="card-body">
+                @await Component.InvokeAsync("ShoppingCart", new { 
+                    cartId = stateRepository.GetValue("CartId"), 
+                    isCompact = true 
+                })
+            </div>
+        </div>
+    </div>
+
+</div>

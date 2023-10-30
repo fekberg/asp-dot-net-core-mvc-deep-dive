@@ -1,0 +1,18 @@
+﻿@model Globomatics.Web.Models.LoginModel
+
+<form asp-action="Login">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-outline mb-4">
+        <label asp-for="Username" class="control-label"></label>
+        <input asp-for="Username" class="form-control" />
+        <span asp-validation-for="Username" class="text-danger"></span>
+    </div>
+
+    <div class="form-outline mb-4">
+        <label asp-for="Password" class="control-label"></label>
+        <input asp-for="Password" class="form-control" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-block mb-4">Login</button>
+</form>
