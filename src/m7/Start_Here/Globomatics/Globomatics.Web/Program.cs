@@ -32,8 +32,6 @@ builder.Services.AddTransient<ICartRepository, CartRepository>();
 
 var app = builder.Build();
 
-app.UseSession();
-
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -46,6 +44,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseSession();
 
 //app.MapControllerRoute(
 //    name: "ticketDetailsRoute",

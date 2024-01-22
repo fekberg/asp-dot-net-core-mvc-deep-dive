@@ -19,6 +19,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Areas\Administration\Views\Customers\Create.cshtml" />
+    <None Include="Areas\Administration\Views\Customers\Delete.cshtml" />
+    <None Include="Areas\Administration\Views\Customers\Details.cshtml" />
+    <None Include="Areas\Administration\Views\Customers\Edit.cshtml" />
+    <None Include="Areas\Administration\Views\Customers\Index.cshtml" />
+    <None Include="Areas\Administration\Views\Login\Index.cshtml" />
+    <None Include="Areas\Administration\Views\_ViewImports.cshtml" />
+    <None Include="Areas\Administration\Views\_ViewStart.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.10">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -32,5 +43,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Globomatics.Infrastructure\Globomatics.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\CMS\Controllers\" />
+    <Folder Include="Areas\CMS\Data\" />
+    <Folder Include="Areas\CMS\Models\" />
+    <Folder Include="Areas\CMS\Views\" />
   </ItemGroup>
 </Project>

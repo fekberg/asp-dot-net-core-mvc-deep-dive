@@ -31,7 +31,6 @@ public class CartController : Controller
     public IActionResult Index(Guid? id)
     {
         return View();
-
     }
 
     [HttpPost]
@@ -64,8 +63,8 @@ public class CartController : Controller
 
     [HttpPost]
     [Route("Update")]
-    // [ValidateAntiForgeryToken]
-    public IActionResult Update([FromBody]UpdateQuantitiesModel updateQuantitiesModel)
+    [ValidateAntiForgeryToken]
+    public IActionResult Update(UpdateQuantitiesModel updateQuantitiesModel)
     {
         if (updateQuantitiesModel.Products is null)
         {
@@ -96,7 +95,7 @@ public class CartController : Controller
     [HttpPost]
     [Route("Finalize")]
     [ValidateAntiForgeryToken]
-    public IActionResult Create([FromBody]CreateOrderModel createOrderModel)
+    public IActionResult Create(CreateOrderModel createOrderModel)
     {
         if (createOrderModel.Customer is null)
         {

@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Globomatics.Web.Models;
+﻿namespace Globomatics.Web.Models;
 
 public class ProductModel
 {

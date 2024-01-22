@@ -113,7 +113,7 @@ public class CartController : Controller
             return View("Index");
         }
 
-        if(ModelState.IsValid)
+        if(!ModelState.IsValid)
         {
             return View("Index");
         }

@@ -1,5 +1,6 @@
 ﻿using Globomantics.Domain.Models;
 using Globomatics.Infrastructure.Repositories;
+using Globomatics.Web.Attributes;
 using Globomatics.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
@@ -20,6 +21,8 @@ public class HomeController : Controller
         this.logger = logger;
     }
 
+    [TimerFilter]
+    // [ServiceFilter(typeof(TimerFilter))]
     public IActionResult Index()
     {
         return View();

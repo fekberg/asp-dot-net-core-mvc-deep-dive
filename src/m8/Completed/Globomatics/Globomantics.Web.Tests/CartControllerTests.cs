@@ -63,8 +63,7 @@ public class CartControllerTests
 
         var result = cartController.AddToCart(model);
 
-        Assert.AreEqual(99, context.Carts.Sum(x => 
-            x.LineItems.Sum(x => x.Quantity)));
+        Assert.AreEqual(99, context.Carts.Sum(x => x.LineItems.Sum(x => x.Quantity)));
 
         Assert.IsInstanceOfType(result, typeof(RedirectToActionResult));
     }
