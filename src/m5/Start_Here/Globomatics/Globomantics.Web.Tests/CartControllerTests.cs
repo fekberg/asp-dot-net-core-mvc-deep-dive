@@ -45,11 +45,12 @@ public class CartControllerTests
     public void Cart_Update_With_Empty_CartId_Should_Create_New_Cart()
     {
         var cartController = new CartController(
-            new CartRepository(context),
-            new CustomerRepository(context),
-            new OrderRepository(context),
-            new InMemoryStateRepository(),
-            logger);
+            logger,
+            new CartRepository(context)
+            //new CustomerRepository(context),
+            //new OrderRepository(context),
+            //new InMemoryStateRepository(),
+        );
 
         var model = new AddToCartModel
         {

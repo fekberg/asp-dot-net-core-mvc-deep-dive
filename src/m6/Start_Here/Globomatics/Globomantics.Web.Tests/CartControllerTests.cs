@@ -48,7 +48,7 @@ public class CartControllerTests
             new CartRepository(context),
             new CustomerRepository(context),
             new OrderRepository(context),
-            new InMemoryStateRepository(),
+            // new InMemoryStateRepository(),
             logger);
 
         var model = new AddToCartModel
